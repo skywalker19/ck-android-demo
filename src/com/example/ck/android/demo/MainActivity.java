@@ -2,6 +2,7 @@ package com.example.ck.android.demo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import com.example.ck.android.demo.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -75,17 +76,16 @@ public class MainActivity extends Activity{
 		RestaurantManager restMgr = new RestaurantManager();
 		restList= restMgr.initiateRestaurent();
 
-		/*setContentView(R.layout.activity_main);
-		(textview1 = (TextView)this.findViewById(R.id.textView1);
+		setContentView(R.layout.activity_main);
+		textview1 = (TextView)this.findViewById(R.id.textView1);
 		view1 = (View)this.findViewById(R.id.view1);
-		resList = new ArrayList();*/
 		
 		mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE); 
 		mySensorManager.registerListener(mySensorEventListener,
 				mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_NORMAL);
 		
-		view1.setOnLongClickListener(new OnLongClickListener(){
+		/*view1.setOnLongClickListener(new OnLongClickListener(){
 
 			@Override
 			public boolean onLongClick(View arg0) {
@@ -103,7 +103,7 @@ public class MainActivity extends Activity{
 					Log.i("MainActivity", "Value: " + iter.next()); 
 				}
 				
-			}});
+			}});*/
 	}
 
 	
