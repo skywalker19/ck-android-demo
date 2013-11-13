@@ -3,7 +3,6 @@ package com.example.ck.android.demo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import android.R;
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -15,19 +14,18 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.ck.android.demo.restaurant.RestaurantManager;
 
 public class MainActivity extends Activity{
 
 	private TextView textview1;
 	private View view1;
-	private Button startBtn;
-	// private Button stopBtn;
 	private String[] options = new String[] { "百年锅贴", "老娘舅", "快乐厨房", "西溪食堂",
 			"华必和", "清真面食", "花溪米粉" };
 	
-	private ArrayList resList; 
+	private ArrayList restList; 
 
 	/* Here we store the current values of acceleration, one for each axis */
 	private float xAccel;
@@ -73,6 +71,10 @@ public class MainActivity extends Activity{
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		RestaurantManager restMgr = new RestaurantManager();
+		restList= restMgr.initiateRestaurent();
+
 		/*setContentView(R.layout.activity_main);
 		(textview1 = (TextView)this.findViewById(R.id.textView1);
 		view1 = (View)this.findViewById(R.id.view1);
@@ -88,8 +90,8 @@ public class MainActivity extends Activity{
 			@Override
 			public boolean onLongClick(View arg0) {
 				
-				resList.add(textview1.getText());      
-				Log.d("MainActivity", "The size of ArrayList is: " + resList.size()); 
+				restList.add(textview1.getText());      
+				Log.d("MainActivity", "The size of ArrayList is: " + restList.size()); 
 				return true;
 			}});
 		
@@ -97,7 +99,7 @@ public class MainActivity extends Activity{
 
 			@Override
 			public void onClick(View arg0) {
-				for(Iterator<String> iter = resList.iterator(); iter.hasNext();) {
+				for(Iterator<String> iter = restList.iterator(); iter.hasNext();) {
 					Log.i("MainActivity", "Value: " + iter.next()); 
 				}
 				
@@ -105,6 +107,13 @@ public class MainActivity extends Activity{
 	}
 
 	
+
+	private void initRestList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 	private void updateAccelParameters(float xNewAccel, float yNewAccel,
 			float zNewAccel) {
